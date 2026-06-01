@@ -288,16 +288,11 @@ nav {
   /* S3 */
   #s3 .page-wrap { padding-top: 40px; padding-bottom: 60px; }
   #s3 h1 { margin-bottom: 20px; }
-  /* Personal Insights label — single line */
-  .section-label { font-size: 14px; white-space: normal; }
+  .section-label { font-size: 14px; }
   .section-label strong { white-space: nowrap; }
-  /* Insight grid — single row horizontal scroll */
-  .summary-grid-outer { overflow-x: auto; padding: 14px; }
-  .summary-grid {
-    grid-template-columns: repeat(6, 200px);
-    gap: 12px;
-    width: max-content;
-  }
+  /* Insight grid — 1 column on mobile */
+  .summary-grid-outer { overflow-x: unset; padding: 14px; }
+  .summary-grid { grid-template-columns: 1fr; gap: 12px; width: auto; }
 
   /* S4 */
   #s4 .page-wrap { padding-top: 40px; padding-bottom: 60px; }
