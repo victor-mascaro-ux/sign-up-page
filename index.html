@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACME Advisors — Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── TOKENS ─────────────────────────────────────── */
+:root {
+  --primary:       #240446;
+  --accent-bar:    #7538b2;
+  --primary-light: #f7f5fb;
+  --gray:          #555;
+  --gray-light:    #757575;
+  --border:        #e0e0e0;
+  --white:         #ffffff;
+  --text:          #1a0433;
+  --nav-h:         52px;
+}
+
+/* ─── BASE ───────────────────────────────────────── */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ─── NAV ────────────────────────────────────────── */
+nav {
+  background: var(--primary);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.nav-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Sedan', serif;
+  font-size: 17px;
+  color: #fff;
+  letter-spacing: .06em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.nav-avatar {
+  margin-left: auto;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── SCREENS ────────────────────────────────────── */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ─── SHARED LAYOUT HELPERS ──────────────────────── */
+.page-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.cta-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 48px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .15s;
+  display: inline-block;
+}
+.cta-btn:hover { opacity: .85; }
+.cta-btn.full { width: 100%; text-align: center; padding: 16px; }
+
+/* ─── CARD (shared style for all cards across screens) ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--accent-bar);
+}
+
+/* ════════════════════════════════════════════════════
+   SCREEN 1 — WELCOME
+════════════════════════════════════════════════════ */
+#s1 .page-wrap {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  text-align: center;
+}
+#s1 .hero-hl {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+#s1 .hero-sub {
+  font-size: clamp(15px, 1.5vw, 20px);
+  color: var(--gray-light);
+  line-height: 1.65;
+  max-width: 680px;
+  margin: 0 auto 60px;
+}
+.section-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 18px;
+  text-align: left;
+}
+.cards-outer {
+  background: var(--primary-light);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 56px;
+}
+.cards-row {
+  display: flex;
+  gap: 16px;
+}
+.feature-card {
+  flex: 1;
+  text-align: left;
+}
+.feature-card .card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.feature-card .card-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.feature-card .card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.feature-card .card-body {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+.est-time {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ════════════════════════════════════════════════════
+   SCREEN 2 — GET YOUR RESULTS
+════════════════════════════════════════════════════ */
+#s2 .page-wrap {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  min-height: calc(100vh - var(--nav-h));
+}
+.s2-left { flex: 1; }
+.s2-left h1 {
+  font-size: clamp(26px, 2.5vw, 40px);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.s2-left .s2-intro {
+  font-size: 15px;
+  color: var(--gray-light);
+  margin-bottom: 28px;
+}
+.result-card {
+  margin-bottom: 20px;
+}
+.result-card .result-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.result-card .result-body {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.s2-right { width: 400px; flex-shrink: 0; }
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.form-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.form-card h2 {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.form-card .form-sub {
+  text-align: center;
+  font-size: 12px;
+  color: var(--gray-light);
+  margin-bottom: 18px;
+}
+.google-btn {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--white);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.google-btn:hover { background: #f5f5f5; }
+.or-div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.or-div::before, .or-div::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.or-div span { font-size: 12px; color: var(--gray-light); }
+.form-row { display: flex; gap: 10px; }
+.form-group { display: flex; flex-direction: column; flex: 1; margin-bottom: 12px; }
+.form-group label { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
+.form-group input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  outline: none;
+  background: #fafafa;
+}
+.form-group input:focus { border-color: var(--primary); background: #fff; }
+.pw-wrap { position: relative; }
+.pw-wrap input { width: 100%; padding-right: 38px; }
+.pw-wrap .eye { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--gray-light); }
+.already { text-align: center; font-size: 12px; color: var(--gray-light); margin-top: 14px; }
+.already a { color: var(--primary); font-weight: 600; text-decoration: none; }
+
+/* ════════════════════════════════════════════════════
+   SCREEN 3 — PERSONALIZED SUMMARY
+════════════════════════════════════════════════════ */
+#s3 .page-wrap {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  text-align: center;
+}
+#s3 h1 {
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 48px;
+  line-height: 1.25;
+}
+.summary-grid-outer {
+  background: var(--primary-light);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 52px;
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.insight-card { text-align: left; }
+.insight-card .ic-icon { font-size: 26px; display: block; margin-bottom: 10px; }
+.insight-card .ic-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.insight-card .ic-body { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+/* ════════════════════════════════════════════════════
+   SCREEN 4 — CLOSING
+════════════════════════════════════════════════════ */
+#s4 .page-wrap {
+  padding-top: 56px;
+  padding-bottom: 56px;
+  text-align: center;
+}
+#s4 h1 {
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.25;
+  margin-bottom: 52px;
+}
+.focus-label {
+  font-size: 17px;
+  text-align: left;
+  margin-bottom: 16px;
+}
+.questions-outer {
+  background: var(--primary-light);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.q-card {
+  flex: 1;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.6;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.schedule-note {
+  font-size: 14px;
+  color: var(--gray-light);
+  text-align: left;
+  margin-bottom: 48px;
+}
+.schedule-note a { color: var(--primary); text-decoration: underline; font-weight: 500; }
+
+/* ─── PROGRESS DOTS ──────────────────────────────── */
+.dots {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.dot.active { background: var(--primary); transform: scale(1.35); }
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE  ≤ 768px
+════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .page-wrap { padding: 0 20px; }
+
+  /* Nav */
+  .nav-title { font-size: 14px; }
+
+  /* Screen 1 */
+  #s1 .page-wrap { padding-top: 40px; padding-bottom: 80px; }
+  #s1 .hero-sub { margin-bottom: 40px; }
+  .cards-outer { padding: 14px; }
+  .cards-row { flex-direction: column; }
+  .feature-card { width: 100%; }
+
+  /* Screen 2 */
+  #s2 .page-wrap {
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 36px;
+    align-items: stretch;
+    min-height: unset;
+  }
+  .s2-right { width: 100%; }
+
+  /* Screen 3 */
+  #s3 .page-wrap { padding-top: 40px; padding-bottom: 80px; }
+  #s3 h1 { margin-bottom: 28px; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Screen 4 */
+  #s4 .page-wrap { padding-top: 40px; padding-bottom: 80px; }
+  #s4 h1 { margin-bottom: 32px; }
+  .questions-outer { flex-direction: column; }
+
+  /* Shared */
+  .cta-btn { width: 100%; text-align: center; padding: 16px; font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+      <circle cx="11" cy="11" r="10" stroke="white" stroke-width="1.5"/>
+      <circle cx="11" cy="11" r="5" stroke="white" stroke-width="1.5"/>
+      <circle cx="11" cy="11" r="1.5" fill="white"/>
+      <line x1="11" y1="1" x2="11" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="11" y1="16" x2="11" y2="21" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="1" y1="11" x2="6" y2="11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="16" y1="11" x2="21" y2="11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    knomee
+  </div>
+  <span class="nav-title">ACME ADVISORS</span>
+  <div class="nav-avatar" id="nav-avatar" style="display:none">D</div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 1 — WELCOME
+════════════════════════════════════════════════ -->
+<div class="screen" id="s1">
+  <div class="page-wrap">
+    <h1 class="hero-hl">Welcome!<br>Wealth is about experiencing life fully.</h1>
+    <p class="hero-sub">Take a few minutes to get clear on what matters most and what your money is really for.</p>
+
+    <p class="section-label">What you'll get:</p>
+    <div class="cards-outer">
+      <div class="cards-row">
+        <div class="card feature-card">
+          <div class="card-header">
+            <span class="card-icon">⚡</span>
+            <span class="card-title">Discover What Matters Most</span>
+          </div>
+          <p class="card-body">A quick, guided experience that clarifies your values, goals, and priorities.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="card-header">
+            <span class="card-icon">💡</span>
+            <span class="card-title">See Your Personal Insights</span>
+          </div>
+          <p class="card-body">Receive a personalized summary of what's driving your financial decisions.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="card-header">
+            <span class="card-icon">✦</span>
+            <span class="card-title">Get Your 3 Most Important Money Questions</span>
+          </div>
+          <p class="card-body">Walk away with questions to help you think, plan, and prepare for what's next.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="cta-btn" onclick="goTo(2)">Discover Financial Joy</button>
+    <p class="est-time">
+      <svg width="14" height="14" viewBox="0 0 15 15" fill="none">
+        <circle cx="7.5" cy="7.5" r="6.5" stroke="#757575" stroke-width="1.2"/>
+        <polyline points="7.5,4 7.5,7.5 10,9.5" stroke="#757575" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Est time: 8 min
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 2 — GET YOUR RESULTS
+════════════════════════════════════════════════ -->
+<div class="screen" id="s2">
+  <div class="page-wrap">
+
+    <div class="s2-left">
+      <h1>Get Your Results</h1>
+      <p class="s2-intro">In the next step, you'll receive:</p>
+
+      <div class="card result-card">
+        <p class="result-title">Personalized Insights</p>
+        <p class="result-body">A simple summary of your priorities, values, goals, and concerns.</p>
+      </div>
+
+      <div class="card result-card">
+        <p class="result-title">Your 3 Most Important Money Questions</p>
+        <p class="result-body">Questions tailored to your responses that help you have more productive conversations about your future.</p>
+      </div>
+    </div>
+
+    <div class="s2-right">
+      <div class="form-card">
+        <div class="form-logo">
+          <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="11" r="10" stroke="#240446" stroke-width="1.5"/>
+            <circle cx="11" cy="11" r="5" stroke="#240446" stroke-width="1.5"/>
+            <circle cx="11" cy="11" r="1.5" fill="#240446"/>
+            <line x1="11" y1="1" x2="11" y2="6" stroke="#240446" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="11" y1="16" x2="11" y2="21" stroke="#240446" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="1" y1="11" x2="6" y2="11" stroke="#240446" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="11" x2="21" y2="11" stroke="#240446" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          knomee
+        </div>
+        <h2>Create your account</h2>
+        <p class="form-sub">Welcome! Please fill in the details to get started.</p>
+
+        <button class="google-btn">
+          <svg width="16" height="16" viewBox="0 0 18 18">
+            <path d="M17.64 9.2a10.34 10.34 0 0 0-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9a8.78 8.78 0 0 0 2.7-6.62z" fill="#4285F4"/>
+            <path d="M9 18a8.59 8.59 0 0 0 5.96-2.18l-2.9-2.26A5.43 5.43 0 0 1 9 14.7c-2.47 0-4.57-1.67-5.32-3.9H.68v2.34A9 9 0 0 0 9 18z" fill="#34A853"/>
+            <path d="M3.68 10.8A5.41 5.41 0 0 1 3.4 9c0-.63.11-1.24.28-1.8V4.86H.68A9 9 0 0 0 0 9c0 1.45.35 2.82.68 4.14l3-2.34z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.58-2.58A8.96 8.96 0 0 0 9 0 9 9 0 0 0 .68 4.86l3 2.34A5.37 5.37 0 0 1 9 3.58z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <div class="or-div"><span>or</span></div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" placeholder="Last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="Enter your email address">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="pw" placeholder="Enter your password">
+            <span class="eye" onclick="togglePw()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2" stroke-linecap="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <button class="cta-btn full" onclick="goTo(3)">View My Results</button>
+        <p class="already">Already have an account? <a href="#">Sign in</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 3 — PERSONALIZED SUMMARY
+════════════════════════════════════════════════ -->
+<div class="screen" id="s3">
+  <div class="page-wrap">
+    <h1>Congratulations, you've taken a meaningful step.</h1>
+
+    <p class="section-label">Sarah, here are your <strong>Personal Insights</strong>:</p>
+    <div class="summary-grid-outer">
+      <div class="summary-grid">
+        <div class="card insight-card">
+          <span class="ic-icon">🛡️</span>
+          <p class="ic-title">Core Values</p>
+          <p class="ic-body">Security, independence, simplicity, and connection</p>
+        </div>
+        <div class="card insight-card">
+          <span class="ic-icon">✨</span>
+          <p class="ic-title">Joy Source</p>
+          <p class="ic-body">Time with my husband and cultural experiences like theater</p>
+        </div>
+        <div class="card insight-card">
+          <span class="ic-icon">⚠️</span>
+          <p class="ic-title">Biggest Concern</p>
+          <p class="ic-body">Preparing for future health outcomes for myself and Vic</p>
+        </div>
+        <div class="card insight-card">
+          <span class="ic-icon">🎯</span>
+          <p class="ic-title">Hopes</p>
+          <p class="ic-body">Having the strength to manage it all and seeing Vic's health improve</p>
+        </div>
+        <div class="card insight-card">
+          <span class="ic-icon">🗺️</span>
+          <p class="ic-title">Lifestyle Aspiration</p>
+          <p class="ic-body">Living near family with the freedom to travel, connect, and enjoy meaningful experiences</p>
+        </div>
+        <div class="card insight-card">
+          <span class="ic-icon">⚡</span>
+          <p class="ic-title">Future Vision</p>
+          <p class="ic-body">Near loved ones, traveling, and staying active with family in the years ahead</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <button class="cta-btn" onclick="goTo(4)">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 4 — CLOSING
+════════════════════════════════════════════════ -->
+<div class="screen" id="s4">
+  <div class="page-wrap">
+    <h1>We can't wait to help you achieve your dreams.<br>The Acme Advisors team will be in touch.</h1>
+
+    <p class="focus-label">Sarah, here are your <strong>3 Most Important Money Questions</strong>:</p>
+    <div class="questions-outer">
+      <div class="q-card">Can you show me how I can realistically work less in the next 1–5 years?</div>
+      <div class="q-card">How would keeping two homes fit into a long-term plan like mine?</div>
+      <div class="q-card">Can we afford private school tuition?</div>
+    </div>
+
+    <p class="schedule-note">If you want to book a call with Acme Advisors, <a href="#">click here to schedule</a>.</p>
+
+    <div style="text-align:center">
+      <button class="cta-btn" onclick="goTo(1)">View My Results</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DOTS ═══ -->
+<div class="dots">
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+</div>
+
+<script>
+let cur = 1;
+function goTo(n) {
+  document.getElementById('s' + cur).classList.remove('active');
+  document.querySelectorAll('.dot')[cur - 1].classList.remove('active');
+  cur = n;
+  document.getElementById('s' + cur).classList.add('active');
+  document.querySelectorAll('.dot')[cur - 1].classList.add('active');
+  document.getElementById('nav-avatar').style.display = cur >= 3 ? 'flex' : 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+goTo(1);
+function togglePw() {
+  const i = document.getElementById('pw');
+  i.type = i.type === 'password' ? 'text' : 'password';
+}
+</script>
+</body>
+</html>
