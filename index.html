@@ -122,15 +122,15 @@ nav {
 .est-time { margin-top: 14px; font-size: 13px; color: var(--gray-light); display: flex; align-items: center; justify-content: center; gap: 6px; }
 
 /* ─── SCREEN 2 ── */
-#s2 .page-wrap { display: flex; gap: 120px; align-items: center; padding-top: 80px; padding-bottom: 80px; padding-right: 60px; min-height: calc(100vh - var(--nav-h)); }
-.s2-left { flex: 1; min-width: 0; }
+#s2 .page-wrap { display: flex; gap: 160px; align-items: center; padding: 80px 80px 80px 40px; min-height: calc(100vh - var(--nav-h)); }
+.s2-left { flex: 0 0 auto; width: 460px; }
 .s2-left h1 { font-size: clamp(26px, 2.5vw, 40px); font-weight: 700; color: var(--primary); margin-bottom: 10px; }
 .s2-left .s2-intro { font-size: 15px; color: var(--gray-light); margin-bottom: 28px; }
 .result-card { margin-bottom: 20px; }
 .result-card .result-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
 .result-card .result-body { font-size: 15px; color: var(--gray); line-height: 1.6; }
 
-.s2-right { width: 360px; flex-shrink: 0; }
+.s2-right { width: 380px; flex-shrink: 0; margin-right: 0; }
 
 /* Form card — matches actual knomee sign-up page */
 .form-card {
@@ -450,15 +450,13 @@ nav {
 
         <div class="or-div"><span>or</span></div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>First name</label>
-            <input type="text" placeholder="First name">
-          </div>
-          <div class="form-group">
-            <label>Last name</label>
-            <input type="text" placeholder="Last name">
-          </div>
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Last name">
         </div>
         <div class="form-group">
           <label>Email address</label>
