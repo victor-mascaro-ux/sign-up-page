@@ -329,7 +329,6 @@ nav {
     </svg>
   </div>
   <span class="nav-title">ACME ADVISORS</span>
-  <div class="nav-avatar" id="nav-avatar" style="display:none">D</div>
 </nav>
 
 <!-- SCREEN 1 — WELCOME -->
@@ -547,7 +546,6 @@ function goTo(n) {
   document.getElementById('s' + cur).classList.remove('active');
   cur = n;
   document.getElementById('s' + cur).classList.add('active');
-  document.getElementById('nav-avatar').style.display = cur >= 3 ? 'flex' : 'none';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 goTo(1);
