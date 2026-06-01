@@ -249,8 +249,9 @@ nav {
 .summary-grid-outer { background: var(--primary-light); border-radius: 16px; padding: 20px; margin-bottom: 52px; }
 .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .insight-card { text-align: left; }
-.insight-card .ic-icon { font-size: 26px; display: block; margin-bottom: 10px; }
-.insight-card .ic-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.ic-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.insight-card .ic-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+.insight-card .ic-title { font-size: 15px; font-weight: 700; line-height: 1.3; }
 .insight-card .ic-body { font-size: 13px; color: var(--gray); line-height: 1.55; }
 
 /* ─── SCREEN 4 ── */
@@ -492,33 +493,27 @@ nav {
     <div class="summary-grid-outer">
       <div class="summary-grid">
         <div class="card insight-card">
-          <span class="ic-icon">🛡️</span>
-          <p class="ic-title">Core Values</p>
+          <div class="ic-header"><span class="ic-icon">🛡️</span><p class="ic-title">Core Values</p></div>
           <p class="ic-body">Security, independence, simplicity, and connection</p>
         </div>
         <div class="card insight-card">
-          <span class="ic-icon">✨</span>
-          <p class="ic-title">Joy Source</p>
+          <div class="ic-header"><span class="ic-icon">✨</span><p class="ic-title">Joy Source</p></div>
           <p class="ic-body">Time with my husband and cultural experiences like theater</p>
         </div>
         <div class="card insight-card">
-          <span class="ic-icon">⚠️</span>
-          <p class="ic-title">Biggest Concern</p>
+          <div class="ic-header"><span class="ic-icon">⚠️</span><p class="ic-title">Biggest Concern</p></div>
           <p class="ic-body">Preparing for future health outcomes for myself and Vic</p>
         </div>
         <div class="card insight-card">
-          <span class="ic-icon">🎯</span>
-          <p class="ic-title">Hopes</p>
+          <div class="ic-header"><span class="ic-icon">🎯</span><p class="ic-title">Hopes</p></div>
           <p class="ic-body">Having the strength to manage it all and seeing Vic's health improve</p>
         </div>
         <div class="card insight-card">
-          <span class="ic-icon">🗺️</span>
-          <p class="ic-title">Lifestyle Aspiration</p>
+          <div class="ic-header"><span class="ic-icon">🗺️</span><p class="ic-title">Lifestyle Aspiration</p></div>
           <p class="ic-body">Living near family with the freedom to travel, connect, and enjoy meaningful experiences</p>
         </div>
         <div class="card insight-card">
-          <span class="ic-icon">⚡</span>
-          <p class="ic-title">Future Vision</p>
+          <div class="ic-header"><span class="ic-icon">⚡</span><p class="ic-title">Future Vision</p></div>
           <p class="ic-body">Near loved ones, traveling, and staying active with family in the years ahead</p>
         </div>
       </div>
