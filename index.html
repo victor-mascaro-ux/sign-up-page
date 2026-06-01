@@ -139,6 +139,7 @@ nav {
   border-radius: 20px;
   padding: 36px 32px 28px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
 .form-logo {
   display: flex;
@@ -232,13 +233,17 @@ nav {
 }
 .form-cta:hover { opacity: .88; }
 
-/* Already have account — below the card */
-.already {
+/* Already have account — footer inside card */
+.form-footer {
+  margin: 24px -32px -28px;
+  padding: 16px 32px;
+  background: #f7f7f7;
+  border-top: 1px solid #ebebeb;
   text-align: center;
+}
+.already {
   font-size: 13px;
   color: var(--gray-light);
-  margin-top: 18px;
-  padding-bottom: 8px;
 }
 .already a { color: var(--text); font-weight: 700; text-decoration: none; }
 .already a:hover { text-decoration: underline; }
@@ -476,8 +481,10 @@ nav {
         </div>
 
         <button class="form-cta" onclick="goTo(3)">View My Results</button>
+        <div class="form-footer">
+          <p class="already">Already have an account? <a href="#">Sign in</a></p>
+        </div>
       </div>
-      <p class="already">Already have an account? <a href="#">Sign in</a></p>
     </div>
   </div>
 </div>
