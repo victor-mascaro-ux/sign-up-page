@@ -130,50 +130,118 @@ nav {
 .result-card .result-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
 .result-card .result-body { font-size: 15px; color: var(--gray); line-height: 1.6; }
 
-.s2-right { width: 400px; flex-shrink: 0; }
-.form-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-.form-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; }
-.form-logo svg { height: 22px; width: auto; }
-.form-card h2 { text-align: center; font-size: 17px; font-weight: 700; margin-bottom: 5px; }
-.form-card .form-sub { text-align: center; font-size: 12px; color: var(--gray-light); margin-bottom: 18px; }
+.s2-right { width: 420px; flex-shrink: 0; }
 
-/* Google button — official brand style */
+/* Form card — matches actual knomee sign-up page */
+.form-card {
+  background: var(--white);
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  padding: 36px 32px 28px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+}
+.form-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+.form-logo svg { height: 28px; width: auto; }
+.form-card h2 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -.3px;
+}
+.form-card .form-sub {
+  text-align: center;
+  font-size: 13px;
+  color: var(--gray-light);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* Google button — pill style matching knomee */
 .google-btn {
   width: 100%;
   border: 1px solid #dadce0;
   background: var(--white);
-  border-radius: 4px;
-  padding: 0 12px;
-  height: 40px;
+  border-radius: 999px;
+  padding: 0 20px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   color: #3c4043;
-  margin-bottom: 14px;
-  box-shadow: 0 1px 2px rgba(60,64,67,.30), 0 1px 3px 1px rgba(60,64,67,.15);
-  transition: box-shadow .15s;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(60,64,67,.15);
+  transition: box-shadow .15s, background .15s;
   letter-spacing: .25px;
 }
-.google-btn:hover { box-shadow: 0 1px 3px rgba(60,64,67,.40), 0 2px 6px 2px rgba(60,64,67,.15); background: #f8f9fa; }
+.google-btn:hover { background: #f8f9fa; box-shadow: 0 2px 6px rgba(60,64,67,.2); }
 
-.or-div { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.or-div::before, .or-div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.or-div span { font-size: 12px; color: var(--gray-light); }
-.form-row { display: flex; gap: 10px; }
-.form-group { display: flex; flex-direction: column; flex: 1; margin-bottom: 12px; }
-.form-group label { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
-.form-group input { border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; font-family: 'Poppins', sans-serif; font-size: 13px; outline: none; background: #fafafa; }
-.form-group input:focus { border-color: var(--primary); background: #fff; }
+.or-div { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.or-div::before, .or-div::after { content: ''; flex: 1; height: 1px; background: #ebebeb; }
+.or-div span { font-size: 13px; color: var(--gray-light); }
+
+.form-row { display: flex; gap: 12px; }
+.form-group { display: flex; flex-direction: column; flex: 1; margin-bottom: 16px; }
+.form-group label { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.form-group input {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  outline: none;
+  background: var(--white);
+  color: var(--text);
+  transition: border-color .15s;
+}
+.form-group input::placeholder { color: #b0b0b0; }
+.form-group input:focus { border-color: var(--primary); }
 .pw-wrap { position: relative; }
-.pw-wrap input { width: 100%; padding-right: 38px; }
-.pw-wrap .eye { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--gray-light); }
-.already { text-align: center; font-size: 12px; color: var(--gray-light); margin-top: 14px; }
-.already a { color: var(--primary); font-weight: 600; text-decoration: none; }
+.pw-wrap input { width: 100%; padding-right: 44px; }
+.pw-wrap .eye { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--gray-light); }
+
+/* CTA inside form */
+.form-cta {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: opacity .15s;
+}
+.form-cta:hover { opacity: .88; }
+
+/* Already have account — below the card */
+.already {
+  text-align: center;
+  font-size: 13px;
+  color: var(--gray-light);
+  margin-top: 18px;
+  padding-bottom: 8px;
+}
+.already a { color: var(--text); font-weight: 700; text-decoration: none; }
+.already a:hover { text-decoration: underline; }
 
 /* ─── SCREEN 3 ── */
 #s3 .page-wrap { padding-top: 64px; padding-bottom: 64px; text-align: center; }
@@ -367,7 +435,7 @@ nav {
         <h2>Create your account</h2>
         <p class="form-sub">Welcome! Please fill in the details to get started.</p>
 
-        <!-- Official Google button -->
+        <!-- Google button -->
         <button class="google-btn" onclick="window.open('https://accounts.google.com','_blank')">
           <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.64 9.2a10.34 10.34 0 0 0-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9a8.78 8.78 0 0 0 2.7-6.62z" fill="#4285F4"/>
@@ -375,7 +443,7 @@ nav {
             <path d="M3.68 10.8A5.41 5.41 0 0 1 3.4 9c0-.63.11-1.24.28-1.8V4.86H.68A9 9 0 0 0 0 9c0 1.45.35 2.82.68 4.14l3-2.34z" fill="#FBBC05"/>
             <path d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.58-2.58A8.96 8.96 0 0 0 9 0 9 9 0 0 0 .68 4.86l3 2.34A5.37 5.37 0 0 1 9 3.58z" fill="#EA4335"/>
           </svg>
-          Sign in with Google
+          Continue with Google
         </button>
 
         <div class="or-div"><span>or</span></div>
@@ -407,9 +475,9 @@ nav {
           </div>
         </div>
 
-        <button class="cta-btn full" onclick="goTo(3)">View My Results</button>
-        <p class="already">Already have an account? <a href="#">Sign in</a></p>
+        <button class="form-cta" onclick="goTo(3)">View My Results</button>
       </div>
+      <p class="already">Already have an account? <a href="#">Sign in</a></p>
     </div>
   </div>
 </div>
