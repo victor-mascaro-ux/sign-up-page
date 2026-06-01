@@ -197,7 +197,14 @@ nav {
 /* ─── MOBILE ≤768px ── */
 @media (max-width: 768px) {
   .page-wrap { padding: 0 20px; }
-  .nav-title { font-size: 13px; }
+  /* Right-align title on mobile so it doesn't overlap the logo */
+  .nav-title {
+    font-size: 13px;
+    position: static;
+    transform: none;
+    margin-left: auto;
+    text-align: right;
+  }
 
   /* S1 */
   #s1 .page-wrap { padding-top: 40px; padding-bottom: 60px; }
